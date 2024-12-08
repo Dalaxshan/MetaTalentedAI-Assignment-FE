@@ -56,7 +56,6 @@ const TaskTable = () => {
           onChange={(e) => setStatusFilter(e.target.value)}
           defaultValue=""
         >
-          <MenuItem value="">All</MenuItem>
           <MenuItem value="Pending">Pending</MenuItem>
           <MenuItem value="In Progress">In Progress</MenuItem>
           <MenuItem value="Completed">Completed</MenuItem>
@@ -75,7 +74,7 @@ const TaskTable = () => {
                 <TableCell>Title</TableCell>
                 <TableCell>Assignee</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Created At</TableCell>
+                <TableCell>Description</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -83,10 +82,10 @@ const TaskTable = () => {
                 filteredTasks.map((task) => (
                   <TableRow key={task.id}>
                     <TableCell>{task.title}</TableCell>
-                    <TableCell>{task.assignee || "Unassigned"}</TableCell>
+                    <TableCell>{task.assignedUser || "Unassigned"}</TableCell>
                     <TableCell>{task.status}</TableCell>
                     <TableCell>
-                      {new Date(task.createdAt).toLocaleString()}
+                      {task.description}
                     </TableCell>
                   </TableRow>
                 ))
