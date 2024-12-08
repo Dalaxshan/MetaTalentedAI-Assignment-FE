@@ -12,12 +12,11 @@ class TasksApi {
         }
       }
     
-
     async getAllTasks() {
         try {
             const response = await apiManager.get(API_CONSTANTS.task);
             console.log("feched tasks:",response);
-          return response;
+          return response?.data;
         } catch (err) {
           console.error('[TasksAPI - getAllTasks]: ', err.response?.data);
           throw new Error(err.response?.data?.userMessage);
@@ -27,7 +26,7 @@ class TasksApi {
     async getTaskByTaskId(taskId) {
         try {
           const response = await apiManager.get(API_CONSTANTS.getTaskByTaskId(taskId));
-          return response;
+          return response?.data;
         } catch (err) {
           console.error('[ReviewAPI - getReviewById]: ', err.response?.data);
           throw new Error(err.response?.data?.userMessage);
@@ -37,7 +36,7 @@ class TasksApi {
       async editTaskByTaskId(taskId, request) {
         try {
           const response = await apiManager.put(API_CONSTANTS.editTaskByTaskId(taskId), request);
-          return response;
+          return response?.data;
         } catch (err) {
           console.error('[ReviewAPI - editReview]: ', err.response?.data);
           throw new Error(err.response?.data?.userMessage);

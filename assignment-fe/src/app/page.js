@@ -16,7 +16,8 @@ import {
   InputLabel,
   CircularProgress,
 } from "@mui/material";
-import { tasksApi } from "@/api";
+import { tasksApi } from "@/api/task";
+import { paths } from "@/paths";
 
 const TaskTable = () => {
   const [tasks, setTasks] = useState([]);
@@ -61,6 +62,14 @@ const TaskTable = () => {
           <MenuItem value="Completed">Completed</MenuItem>
         </Select>
       </FormControl>
+
+      <Button
+          variant="contained"
+          color="primary"
+          onClick={() => router.push(paths.createTaskForm)}  
+        >
+          Create Task
+        </Button>
 
       {loading ? (
         <CircularProgress />
