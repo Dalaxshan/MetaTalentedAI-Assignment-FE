@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from "react";
-
 import {
   Table,
   TableBody,
@@ -15,19 +14,23 @@ import {
   FormControl,
   InputLabel,
   CircularProgress,
-} from "@mui/material";
+  Button,                                                                                                                       
+} from "@mui/material";                     
 import { tasksApi } from "@/api/task";
 import { paths } from "@/paths";
+import { useRouter } from "next/navigation";
+
 
 const TaskTable = () => {
   const [tasks, setTasks] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const router=useRouter();
 
   // Fetch tasks from the API
   const fetchTasks = async (status) => {
-    setLoading(true);
+    setLoading(true);  
     setError(null);
     try {
       const fetchedTasks = await tasksApi.getAllTasks();
@@ -66,7 +69,7 @@ const TaskTable = () => {
       <Button
           variant="contained"
           color="primary"
-          onClick={() => router.push(paths.createTaskForm)}  
+       onClick={() => router.push(paths.createTaskForm)}
         >
           Create Task
         </Button>
@@ -98,7 +101,7 @@ const TaskTable = () => {
                       {task.description}
                     </TableCell>
                     <TableCell>
-                      {task.createdAt}
+                      {new Date(task.createdAt).toLocaleDateString()}
                     </TableCell>
                   </TableRow>
                 ))

@@ -23,7 +23,7 @@ export const TaskForm = ({ mutate }) => {
 
   // Fetch users for the assignee dropdown
   const fetchUsers = async () => {
-    setLoadingUsers(true);
+    setLoadingUsers(true);                                                                                                        
     try {
       const fetchedUsers = await userApi.getAllUsers(); 
       setUsers(fetchedUsers || []);
@@ -31,9 +31,9 @@ export const TaskForm = ({ mutate }) => {
       toast.error("Failed to fetch users");
     } finally {
       setLoadingUsers(false);
-    }
+    }                                                             
   };
-
+     
   useEffect(() => {
     fetchUsers();
   }, []);
