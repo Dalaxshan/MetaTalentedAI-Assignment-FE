@@ -74,7 +74,8 @@ const TaskTable = () => {
                 <TableCell>Title</TableCell>
                 <TableCell>Assignee</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Description</TableCell>
+                    <TableCell>Description</TableCell>
+                    <TableCell>Created At</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -86,6 +87,9 @@ const TaskTable = () => {
                     <TableCell>{task.status}</TableCell>
                     <TableCell>
                       {task.description}
+                    </TableCell>
+                    <TableCell>
+                      {task.createdAt}
                     </TableCell>
                   </TableRow>
                 ))
